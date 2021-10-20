@@ -1,0 +1,28 @@
+{
+  "name": "backend-contele",
+  "version": "1.0.0",
+  "description": "backend-contele",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DorivalRamos/backend-contele.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DorivalRamos/backend-contele/issues"
+  },
+  "homepage": "https://github.com/DorivalRamos/backend-contele#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.95.11",
+    "pg": "^8.7.1"
+  }
+}
