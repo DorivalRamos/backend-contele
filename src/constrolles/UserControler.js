@@ -45,4 +45,14 @@ module.exports = {
       next(error);
     }
   },
+
+  async deleteAll(req, res, next) {
+    try {
+      await knex("users").where("drop", false).del();
+
+      return res.send();
+    } catch (error) {
+      next(error);
+    }
+  },
 };

@@ -1,11 +1,11 @@
 const express = require("express");
-const { application_name } = require("pg/lib/defaults");
 const routes = require("./routes");
 
 const app = express();
 app.use(express.json());
 app.use(routes);
 
+const port = 3000;
 //notFound
 app.use((req, res, next) => {
   const error = new Error("NotFound");
@@ -18,4 +18,4 @@ app.use((error, req, res, next) => {
   res.status(error.status || 500);
   res.json({ error: error.message });
 });
-app.listen(3333, () => console.log("server is running"));
+app.listen(port, () => console.log("server is running"));

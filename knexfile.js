@@ -3,10 +3,13 @@
 module.exports = {
   development: {
     client: "pg",
+    version: "7.2",
     connection: {
+      host: "localhost",
       database: "knex_test",
       user: "pguser",
       password: "pgpassword",
+      port: 5432,
     },
     migrations: {
       tableName: "knex_migrations",
