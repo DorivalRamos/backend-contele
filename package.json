@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "express-class-validator": "^1.0.3",
     "knex": "^0.95.11",
     "pg": "^8.7.1"
   }

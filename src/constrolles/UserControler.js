@@ -1,8 +1,23 @@
 const knex = require("../database");
 
+
 module.exports = {
-  async index(req, res) {
+  async getAllUsers(req, res) {
     const results = await knex("users");
+    
+    if(!results){
+      res.send('404')
+    }
+    return res.json(results);
+  },
+
+  async getUsersById(req, res) {
+    const {id} = req.params;
+    const results = await knex("users").where({id})
+
+    if(!results){
+      res.send('404')
+    }
     return res.json(results);
   },
 
@@ -15,7 +30,7 @@ module.exports = {
         userEmail,
       });
 
-      return res.status(201).send();
+      return res.status(201).send(username, userPassword, userEmail);
     } catch (error) {
       next(error);
     }
@@ -48,7 +63,7 @@ module.exports = {
 
   async deleteAll(req, res, next) {
     try {
-      await knex("users").where("drop", false).del();
+      await knex("users").del();
 
       return res.send();
     } catch (error) {
