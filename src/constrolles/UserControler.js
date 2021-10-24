@@ -2,6 +2,10 @@ const knex = require("../database");
 
 
 module.exports = {
+  async hello (req,res){
+    const hello = "hello world";
+    return res.send(hello);
+  },
   async getAllUsers(req, res) {
     const results = await knex("users");
     
@@ -14,9 +18,10 @@ module.exports = {
   async getUsersById(req, res) {
     const {id} = req.params;
     const results = await knex("users").where({id})
+    console.log(results)
 
-    if(!results){
-      res.send('404')
+    if(results === -1){
+      res.send('400')
     }
     return res.json(results);
   },

@@ -1,0 +1,216 @@
+{
+    "openapi": "3.0.0",
+    "info":{
+        "title": "API de Crud basico integrado com Banco de dados ",
+        "description": "Essa API tem como objetivo criar um pequeno crud com integração ao Postgres e docker  ",
+        "termsOfService": "http://localhost:3000/terms",
+        "contact": {
+            "email": "dorivalmillan2@hotmail.com"
+        },
+        "version": "1.0.0"},
+        "servers": [
+            {
+                "url": "http://localhost:3000/api/v1",
+                "description": "Versão de teste"
+            }
+        ],
+        "paths": {
+            "/users":{
+                "post": {
+                    "summary":"Cadastro de Usuário ",
+                    "description": "Essa rota esta responsavel por cadastrar um usuário no banco ",
+                    "tags":["Usuário"],
+                    "requestBody":{
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref": "#/components/schemas/users"
+                                },
+                                "examples":{
+                                    "users":{
+                                        "value":{
+                                            "username":"Dorival",
+                                            "userEmail":"dorival@email.com",
+                                            "userPassword":"Dorival#123"
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses":{
+                        "201":{
+                             "description": "ok",
+                             "content": {
+                                 "application/json":{
+                                     "schema":{
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/users" 
+                                     }
+                                 }
+                             }
+                        }
+                    }
+                },
+                "get":{
+                    "description": "Busca todos os Usuários do Banco",
+                    "summary": "Rota responsavel por buscar todos os Usuários do banco",
+                    "tags": ["Usuário"],
+                    "responses": {
+                        "201":{
+                            "description": "ok",
+                            "content": {
+                                "application/json":{
+                                    "schema":{
+                                       "type": "object",
+                                       "$ref": "#/components/schemas/users" 
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                },
+                "delete":{
+                    "description": "Deleta todos os Usuários do Banco",
+                    "summary": "Essa rota está responsavel por Deletar todos Usuários cadastrados no banco",
+                    "tags": ["Usuário"],
+                    "responses":{
+                        "201":{
+                             "description": "ok",
+                             "content": {
+                                 "application/json":{
+                                     
+                                 }
+                             }
+                        }
+                    }
+                }
+                
+            },
+            "/usersById/{id}":{
+                "get":{
+                    "description": "Busca por Id de Usuário do Banco",
+                    "summary": "Essa rota esta responsavel por trazer o Usuário cadastrados no banco, sendo pesquisado pelo ID",
+                    "tags": ["Usuário"],
+                    "parameters": [
+                        {
+                            "name" :"id",
+                            "in": "path",
+                            "description": "Id do usuário para busca",
+                            "required": true
+                        }
+                    ],
+                    "responses":{
+                        "201":{
+                             "description": "ok",
+                             "content": {
+                                 "application/json":{
+                                     "schema":{
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/users" 
+                                     }
+                                 }
+                             }
+                        }
+                    }
+                }
+            },
+            "/users/{id}":{
+                "put":{
+                    "description": "Atualização de um  Usuário do Banco",
+                    "summary": "Essa rota esta responsavel por modificar um Usuário cadastrado no banco",
+                    "tags": ["Usuário"],
+                    "parameters": [
+                        {
+                            "name" :"id",
+                            "in": "path",
+                            "description": "Id do usuário para busca",
+                            "required": true
+                        }
+                    ],
+                    "requestBody":{
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref": "#/components/schemas/users"
+                                },
+                                "examples":{
+                                    "users":{
+                                        "value":{
+                                            "username":"Dorival Ramos",
+                                            "userEmail":"dorivalRamos@email.com",
+                                            "userPassword":"Dorival#12345"
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses":{
+                        "201":{
+                             "description": "ok",
+                             "content": {
+                                 "application/json":{
+                                     "schema":{
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/users" 
+                                     }
+                                 }
+                             }
+                        }
+                    }
+                },
+                "delete":{
+                    "description": "Deleta por Id um Usuário do Banco",
+                    "summary": "Essa rota está responsavel por Deletar o Usuário cadastrados no banco, sendo pesquisado pelo ID",
+                    "tags": ["Usuário"],
+                    "parameters": [
+                        {
+                            "name" :"id",
+                            "in": "path",
+                            "description": "Id do usuário para busca",
+                            "required": true
+                        }
+                    ],
+                    "responses":{
+                        "201":{
+                             "description": "ok",
+                             "content": {
+                                 "application/json":{
+                                     
+                                 }
+                             }
+                        }
+                    }
+                }
+            }
+        },
+        "components":{
+            "schemas":{
+                "users":{
+                    "type":"object",
+                    "properties":{
+                        "username":{
+                            "type": "string"
+
+                        },
+                        "userEmail":{
+                            "type": "string"
+                        },
+                        "userPassword":{
+                            "type": "string"
+                        },
+                        "id":{
+                            "type":"string"
+                        }
+                    }
+                }
+            }
+        }
+        
+
+    
+}
