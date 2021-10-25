@@ -1,4 +1,4 @@
-## Tecnologias usados no projeto;
+## Tecnologias usadas no projeto;
 * Express,
 * Knex,
 * Postgres,
@@ -12,14 +12,14 @@
 $npm i
 $docker-compose up -d
 ```
-Instalado todas as dependencias com o '$npm i' e o docker com o 'docker-compose up -d',
+Instalado todas as dependências com o '$npm i' e o docker com o 'docker-compose up -d',
 
 Utilize o comando:
 ```
 npm start
 ```
 
-E caso queira já ter alguns usuarios já cadastrados, utilize o seguinte comando:
+E caso queira já ter alguns usuários já cadastrados, utilize o seguinte comando:
 ```
  npx knex seed:run
 ```
