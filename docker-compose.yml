@@ -16,6 +16,20 @@ services:
       POSTGRES_PASSWORD: pgpassword
       POSTGRES_DB: knex_test
 
- 
+  node-app:
+      container_name: node16-app
+      image: node:16
+      depends_on: 
+        - pgsql
+      ports: 
+        - "3000:3000"
+      volumes: 
+        - .:/app
+      working_dir: /app 
+      command: bash -c "npm i && npm run start:dev" 
+      environment: 
+
+        NODE_ENV: local_docker
+        PORT: 3000
 volumes:
   pg-data:
