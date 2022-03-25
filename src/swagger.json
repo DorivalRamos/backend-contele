@@ -77,7 +77,7 @@
                     "summary": "Essa rota está responsavel por Deletar todos Usuários cadastrados no banco",
                     "tags": ["Usuário"],
                     "responses":{
-                        "201":{
+                        "200":{
                              "description": "ok",
                              "content": {
                                  "application/json":{
@@ -176,7 +176,7 @@
                         }
                     ],
                     "responses":{
-                        "201":{
+                        "200":{
                              "description": "ok",
                              "content": {
                                  "application/json":{
