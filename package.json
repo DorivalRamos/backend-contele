@@ -5,7 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "start": "nodemon",
-    "start:dev": "nodemon --trace-warnings"
+    "start:dev": "NODE_ENV=development nodemon --trace-warnings"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,6 @@
     "express-validator": "^6.14.0",
     "knex": "^0.95.11",
     "pg": "^8.7.1",
-    "swagger-ui-express": "^4.1.6"
+    "swagger-ui-express": "^4.3.0"
   }
 }
