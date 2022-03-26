@@ -2,8 +2,8 @@ const express = require("express");
 
 const routes = express.Router();
 
-const UserController = require("./middlewares/UserControler");
-const registerSchema = require("./middlewares/register-schema");
+const UserController = require("./src/UserControler");
+const registerSchema = require("./src/register-schema");
 
 routes.get("api-docs");
 routes.get("/api/v1/hellow", UserController.hello)

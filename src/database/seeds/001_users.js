@@ -6,17 +6,17 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex("users").insert([
         {
-          username: "dorival",
+          userName: "dorival",
           userPassword: "dorival",
           userEmail: "dorival@email.com",
         },
         {
-          username: "alessandra",
+          userName: "alessandra",
           userPassword: "alessandra",
           userEmail: "alessandra@email.com",
         },
         {
-          username: "vladimir",
+          userName: "vladimir",
           userPassword: "vladimir",
           userEmail: "vladimir@email.com",
         },

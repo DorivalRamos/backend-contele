@@ -4,8 +4,8 @@
   "description": "backend-contele",
   "main": "src/server.js",
   "scripts": {
-    "start": "nodemon",
-    "start:dev": "NODE_ENV=development nodemon --trace-warnings"
+    "start": "node server.js",
+    "start:dev": "nodemon server.js --trace-warnings"
   },
   "repository": {
     "type": "git",

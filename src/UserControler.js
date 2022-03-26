@@ -1,5 +1,5 @@
-const knex = require("../database");
-const { validationResult}  = require('express-validator')
+const knex = require("./database");
+const { validationResult }  = require('express-validator')
 
 
 module.exports = {
@@ -42,8 +42,9 @@ module.exports = {
         userEmail,
       });
 
-      return res.status(201).send(username, userEmail);
+      return res.status(201).send(req.body);
     } catch (error) {
+      console.log(error);
       next(error);
     }
   },
@@ -53,7 +54,7 @@ module.exports = {
       const { userName, userPassword, userEmail } = req.body;
       const { id } = req.params;
       await knex("users")
-        .update({ userName, userEmail, userPassword })
+        .update({ username, userEmail, userPassword })
         .where({ id });
 
       return res.send();
