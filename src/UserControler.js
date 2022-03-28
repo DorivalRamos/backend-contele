@@ -49,16 +49,17 @@ module.exports = {
 
   async update(req, res, next) {
     const { id } = req.params;
-    const findUser = await getUsersById(id);
+    const user = req.body;
+    const results = await knex("users").where({ id });
 
     try {
-      const { userName, userPassword, userEmail } = req.body;
-      const { id } = req.params;
-      await knex("users")
-        .update({ userName, userEmail, userPassword })
-        .where({ id });
+      const updatedUser = await UserRepository.UpdateUserRepository(
+        id,
+        results,
+        user
+      );
 
-      return res.json(findUser);
+      return res.json("Usuario Atualizado com sucesso");
     } catch (error) {
       next(error);
     }
