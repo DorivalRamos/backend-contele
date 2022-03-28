@@ -1,63 +1,64 @@
 const knex = require("./database");
-const { validationResult }  = require('express-validator')
+const { validationResult } = require("express-validator");
 
+const UserRepository = require("./UserRepository");
 
 module.exports = {
-  async hello (req,res){
+  async hello(req, res) {
     const hello = "hello world";
     return res.send(hello);
   },
   async getAllUsers(req, res) {
-     const results = await knex("users");
-    
-    if(!results){
-      res.send('404')
+    const results = await knex("users");
+
+    if (!results) {
+      res.send("404");
     }
     return res.json(results);
   },
 
   async getUsersById(req, res) {
-    const {id} = req.params;
-    const results = await knex("users").where({id})
-    console.log(results)
+    const { id } = req.params;
+    const results = await knex("users").where({ id });
 
-    if(results === -1){
-      res.send('400')
+    if (results === -1) {
+      res.send(400);
     }
     return res.json(results);
   },
 
-  async create( req, res, next) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) 
-    res.json(errors)
+  async create(req, res, next) {
+    const errors = await validationResult(req);
 
-    try {
+    if (!errors.isEmpty()) {
+      return res.status(400).json(errors);
+    } else {
+      try {
+        const createUser = await UserRepository.createUserRepository(req.body);
 
-      const { username, userPassword, userEmail } = req.body;
-           
-        await knex("users").insert({
-        username,
-        userPassword,
-        userEmail,
-      });
+        return res.status(201).send(createUser);
+      } catch (error) {
+        if (error.code.toString() === "23505") {
+          return res.status(400).json("Endereço de e-mail já está em uso!");
+        }
 
-      return res.status(201).send(req.body);
-    } catch (error) {
-      console.log(error);
-      next(error);
+        next(error);
+      }
     }
   },
 
   async update(req, res, next) {
+    const { id } = req.params;
+    const findUser = await getUsersById(id);
+
     try {
       const { userName, userPassword, userEmail } = req.body;
       const { id } = req.params;
       await knex("users")
-        .update({ username, userEmail, userPassword })
+        .update({ userName, userEmail, userPassword })
         .where({ id });
 
-      return res.send();
+      return res.json(findUser);
     } catch (error) {
       next(error);
     }
