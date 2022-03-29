@@ -1,37 +1,50 @@
+Este repósitorio foi criado com a intenção de ser usado como estudo para uma API REST FULL usando Express e knex como ORM
+
 ## Tecnologias usadas no projeto;
-* Express,
-* Knex,
-* Postgres,
-* Docker
+
+- Express,
+- Knex,
+- Postgres,
+- Docker Compose
+- Migrations
+- Seeds
 
 ## Tecnologias para serem implementadas em futuras atualizações:
-* class-validator;
+
+- Token JWT
+- Password Hash
 
 ## Para iniciar o projeto digite os seguintes comandos:
+
 ```
-$npm i
 $docker-compose up -d
 ```
-Instalado todas as dependências com o '$npm i' e o docker com o 'docker-compose up -d',
 
-Utilize o comando:
+## Para olhar as rotas e a documentação no Swaager, cole a seguinte URL no seu navegador
+
 ```
-npm start
+http://localhost:3000/api-docs/
 ```
 
-E caso queira já ter alguns usuários já cadastrados, utilize o seguinte comando:
-```
- npx knex seed:run
-```
+## No link acima você terá acesso as rotas basicas de uma API REST Full
+
 ---
+
+---
+
+## Abaixo você tera por escrito as Premissas para esse repositorio
+
 ## TESTE
+
 ##### Criar um serviço de API RESTFUL usando nodejs express
+
 - Criar 4 endpoints GET/POST/PUT/DELETE
 - Documentação utilizando swagger.
 - docker/compose.
 - postgres.
 
 ### Premissas
+
 - JAVASCRIPT.
 - Salvar (email, senha).
 - Cada usuário deverá ter um ID único
@@ -42,11 +55,12 @@ E caso queira já ter alguns usuários já cadastrados, utilize o seguinte coman
 - Postgres
 
 ### Documentação
-HTTP | ROUTE | BODY | DESCRIÇÃO |
-| --- | ------ | ------ |  ------ |
-| GET | /api/v1/users |  | Listar todos usuarios
-| GET | /api/v1/users/user_id | | Listar único usuário
-| POST | /api/v1/users | JSON (email,senha) | Criar único usuário
-| PUT | /api/v1/users/user_id | JSON (email,senha) | Alterar único usuário
-| DELETE | /api/v1/users | | Deletar todos usuarios
-| DELETE | /api/v1/users/user_id | | Deletar único usuário
+
+| HTTP   | ROUTE                 | BODY               | DESCRIÇÃO              |
+| ------ | --------------------- | ------------------ | ---------------------- |
+| GET    | /api/v1/users         |                    | Listar todos usuarios  |
+| GET    | /api/v1/users/user_id |                    | Listar único usuário   |
+| POST   | /api/v1/users         | JSON (email,senha) | Criar único usuário    |
+| PUT    | /api/v1/users/user_id | JSON (email,senha) | Alterar único usuário  |
+| DELETE | /api/v1/users         |                    | Deletar todos usuarios |
+| DELETE | /api/v1/users/user_id |                    | Deletar único usuário  |
