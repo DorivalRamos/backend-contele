@@ -1,12 +1,12 @@
 const express = require("express");
 const routes = require("./routes");
-const swaggerUI = require("swagger-ui-express")
-const swaggerDocs = require("./src/swagger.json")
+const swaggerUI = require("swagger-ui-express");
+const swaggerDocs = require("./swagger.json");
 
 const app = express();
 app.use(express.json());
 app.use(routes);
-app.use("/api-docs", swaggerUI.serve,swaggerUI.setup(swaggerDocs))
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 const port = 3000;
 //notFound
 app.use((req, res, next) => {
