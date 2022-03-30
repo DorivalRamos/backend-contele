@@ -8,6 +8,9 @@ Este repósitorio foi criado com a intenção de ser usado como estudo para uma 
 - Docker Compose
 - Migrations
 - Seeds
+- Insominia para teste de rota
+- Dbeaver como Client para Database
+- Vscode como editor de texto
 
 ## Tecnologias para serem implementadas em futuras atualizações:
 
