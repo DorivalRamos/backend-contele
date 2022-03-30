@@ -2,7 +2,16 @@ const knex = require("../../database");
 
 const find_user_by_id = async (req, res) => {
   const { id } = req.params;
-  const results = await knex("users").where({ id, isDeleted: false });
+  const results = await knex("users")
+    .select(
+      "id",
+      "userName",
+      "userEmail",
+      "create_at",
+      "update_at",
+      "isDeleted"
+    )
+    .where({ id, isDeleted: false });
 
   if (!results[0]) {
     return res.status(404).json({ error: "Usuário não encontrado!" });
