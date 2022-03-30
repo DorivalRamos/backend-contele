@@ -3,7 +3,6 @@ const find_user_by_id = require("../user_service/find_user_by_id");
 
 const delete_all_users = async (req, res, next) => {
   try {
-    const user = await find_user_by_id.find_user_by_id(req, res);
     await knex("users")
       .update({
         isDeleted: true,
