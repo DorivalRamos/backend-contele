@@ -1,4 +1,5 @@
 const knex = require("./database");
+const find_user_by_id = require("./User/user_service/find_user_by_id");
 
 const create_user_repository = async (User) => {
   const { userName, userPassword, userEmail } = User;
@@ -11,22 +12,16 @@ const create_user_repository = async (User) => {
   return User;
 };
 
-const UpdateUserRepository = async (id, results, user, res) => {
-  results.userName = user.userName ? user.userName : results.userName;
-  results.userEmail = user.userEmail ? user.userEmail : results.userEmail;
-  results.userPassword = user.userPassword
-    ? user.userPassword
-    : results.userPassword;
+const update_user_repository = async (id, req) => {
+  const { userName, userPassword, userEmail } = await req.body;
 
-  const updatedUser = await knex("users")
-    .update({
-      userName: results.userName,
-      userEmail: results.userEmail,
-      userPassword: results.userPassword,
-    })
-    .where({ id });
+  const updatedUser = await knex("users").where({ id: id.id }).update({
+    userName: userName,
+    userEmail: userPassword,
+    userPassword: userEmail,
+  });
 
-  return results;
+  return updatedUser;
 };
 
-module.exports = { create_user_repository, UpdateUserRepository };
+module.exports = { create_user_repository, update_user_repository };
